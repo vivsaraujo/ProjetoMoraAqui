@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.vivian.projetomoraaqui.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/bt_novo"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/screen_border"
+            android:text="Novo"
+            android:textColor="@color/colorTexto" />
+
+        <Button
+            android:id="@+id/bt_procurar"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/screen_border2"
+            android:text="Procurar"
+            android:textColor="@color/colorTexto" />
+
+        <Button
+            android:id="@+id/bt_mapa"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/screen_border3"
+            android:text="Mapa"
+            android:textColor="@color/colorTexto" />
+
+    </LinearLayout>
+
+</RelativeLayout>

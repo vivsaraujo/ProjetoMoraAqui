@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.vivian.projetomoraaqui.TelaNovo"
+    tools:showIn="@layout/activity_tela_novo">
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+            <EditText
+                android:id="@+id/edt_fone"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/edit_text_design"
+                android:hint="(99)99999-9999"
+                android:inputType="phone"
+                android:padding="7dp"
+                android:textAlignment="center"
+                android:textSize="22dp" />
+
+            <Spinner
+                android:id="@+id/spin_tamanho"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/spinner_tamanho_design"
+                android:padding="10dp"
+                android:spinnerMode="dropdown"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/spin_tipo"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/spinner_tipo_design"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:spinnerMode="dropdown"
+                android:textAlignment="center" />
+
+            <Switch
+                android:id="@+id/swt_opcao"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp"
+                android:checked="true"
+                android:text="Em Construção?"
+                android:textOff="Não"
+                android:textOn="Sim"
+                android:textSize="18dp" />
+
+
+            <Button
+                android:id="@+id/bt_pronto"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/screen_border"
+                android:text="Pronto"
+                android:textColor="@color/colorTexto" />
+
+            <Button
+                android:id="@+id/bt_limpar"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/screen_border"
+                android:text="limpar"
+                android:textColor="@color/colorTexto" />
+
+        </LinearLayout>
+</RelativeLayout>

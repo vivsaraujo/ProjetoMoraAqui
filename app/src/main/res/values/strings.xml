@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">More Aqui</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_tela_novo">Novo</string>
+    <string-array name="tamanho_array_list">
+        <item>Pequeno</item>
+        <item>Médio</item>
+        <item>Grande</item>
+        <item>Não Sei</item>
+    </string-array>
+    <string-array name="tipo_array_list">
+        <item>Casa</item>
+        <item>Apartamento</item>
+        <item>Loja</item>
+        <item>Não Sei</item>
+    </string-array>
+
+</resources>
