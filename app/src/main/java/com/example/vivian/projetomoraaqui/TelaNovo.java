@@ -1,6 +1,10 @@
 package com.example.vivian.projetomoraaqui;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -31,7 +35,7 @@ public class TelaNovo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_novo);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         spin_tamanho = (Spinner) findViewById(R.id.spin_tamanho);
@@ -39,7 +43,6 @@ public class TelaNovo extends AppCompatActivity {
         edt_fone = (EditText) findViewById(R.id.edt_fone);
         bt_limpar = (Button) findViewById(R.id.bt_limpar);
         bt_pronto = (Button) findViewById(R.id.bt_pronto);
-
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTexto));
         if (toolbar != null) {
@@ -62,6 +65,26 @@ public class TelaNovo extends AppCompatActivity {
             }
         });
 
+        bt_pronto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String telefone = edt_fone.getText().toString();
+                if(telefone == null || telefone.equals("")) {
+                    edt_fone.setError("Campo telefone obrigatório");
+                    return;
+
+                    } else{
+
+                    Toast.makeText(TelaNovo.this, "Informações salvas com sucesso", Toast.LENGTH_SHORT).show();
+                    Intent telaAnterior  = new Intent(TelaNovo.this, MainActivity.class);
+                    startActivity(telaAnterior);
+
+                }
+            }
+        });
+
+
         spin_tamanho.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -73,21 +96,11 @@ public class TelaNovo extends AppCompatActivity {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
-
-
-        bt_pronto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(TelaNovo.this, "Salvo", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -97,7 +110,7 @@ public class TelaNovo extends AppCompatActivity {
                 try{
                     if(position > 0) {
                         String itemSelecionado = spin_tipo.getSelectedItem().toString();
-                        Log.i("MeuLogTipo", itemSelecionado);
+                        Log.i("MeuLogX", itemSelecionado);
                     }
                 }catch (Exception e){
                     e.printStackTrace();
@@ -114,7 +127,6 @@ public class TelaNovo extends AppCompatActivity {
         carregaSpinnerTipo();
 
     }
-
 
     public void carregaSpinnerTamanho() {
 
@@ -152,5 +164,6 @@ public class TelaNovo extends AppCompatActivity {
                 this));
 
     }
+
 }
 

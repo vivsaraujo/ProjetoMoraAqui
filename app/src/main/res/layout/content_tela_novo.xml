@@ -27,7 +27,8 @@
                 android:inputType="phone"
                 android:padding="7dp"
                 android:textAlignment="center"
-                android:textSize="22dp" />
+                android:textSize="22dp"
+                android:maxLength="11"/>
 
             <Spinner
                 android:id="@+id/spin_tamanho"
@@ -60,7 +61,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="70dp"
-                android:checked="true"
+                android:checked="false"
                 android:text="Em Construção?"
                 android:textOff="Não"
                 android:textOn="Sim"
