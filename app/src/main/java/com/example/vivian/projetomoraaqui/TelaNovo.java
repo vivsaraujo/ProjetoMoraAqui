@@ -1,20 +1,21 @@
 package com.example.vivian.projetomoraaqui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 
@@ -31,6 +32,13 @@ public class TelaNovo extends AppCompatActivity {
     private  ArrayAdapter adapterTamanho;
     private  ArrayAdapter adapterTipo;
 
+    private Switch swt_opcao;
+
+    private DatabaseMoreAqui banco;
+    private MaskEditTextChangedListener maskTEL;
+
+    String opcao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +48,20 @@ public class TelaNovo extends AppCompatActivity {
 
         spin_tamanho = (Spinner) findViewById(R.id.spin_tamanho);
         spin_tipo = (Spinner) findViewById(R.id.spin_tipo);
+
         edt_fone = (EditText) findViewById(R.id.edt_fone);
+        maskTEL = new MaskEditTextChangedListener("(##)#####-####", edt_fone);
+        edt_fone.addTextChangedListener(maskTEL);
+
         bt_limpar = (Button) findViewById(R.id.bt_limpar);
         bt_pronto = (Button) findViewById(R.id.bt_pronto);
 
+        swt_opcao= (Switch) findViewById(R.id.swt_opcao);
+
+        banco = new DatabaseMoreAqui(this);
+
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTexto));
         if (toolbar != null) {
-            toolbar.setTitle("Novo");
             toolbar.setNavigationIcon(R.drawable.voltar);
 
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -69,29 +84,67 @@ public class TelaNovo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String telefone = edt_fone.getText().toString();
-                if(telefone == null || telefone.equals("")) {
-                    edt_fone.setError("Campo telefone obrigatório");
-                    return;
+                    if (edt_fone.getText().toString().equals("")) {
+                        edt_fone.setError("Campo Obrigatório");
+                        edt_fone.requestFocus();
 
-                    } else{
+                    } else {
 
-                    Toast.makeText(TelaNovo.this, "Informações salvas com sucesso", Toast.LENGTH_SHORT).show();
-                    Intent telaAnterior  = new Intent(TelaNovo.this, MainActivity.class);
-                    startActivity(telaAnterior);
+                        MoreAqui m = new MoreAqui();
+                        m.setTelefone(edt_fone.getText().toString());
+                        m.setTamanho(spin_tamanho.getSelectedItem().toString());
+                        m.setTipo(spin_tipo.getSelectedItem().toString());
+                        m.setEmConstrucao(opcao.toString());
+                        banco.cadastrarRegistro(m);
 
+                        edt_fone.setText(null);
+
+                        Toast.makeText(getApplicationContext(), "Registro inserido com sucesso!", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(TelaNovo.this, ListaActivity.class);
+                        startActivity(i);
+                    }
+            }
+
+
+            //String telefone = edt_fone.getText().toString();
+
+            //  if(telefone == null || telefone.equals("")) {
+            //    edt_fone.setError("Campo telefone obrigatório");
+            //  return;
+
+            //} else{
+//
+            //                  Toast.makeText(TelaNovo.this, "Informações salvas com sucesso", Toast.LENGTH_SHORT).show();
+            //                Intent telaAnterior  = new Intent(TelaNovo.this, MainActivity.class);
+            //             startActivity(telaAnterior);
+
+            //      }
+            // }
+        });
+
+        swt_opcao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(swt_opcao.isChecked()){
+                    swt_opcao.setTextOn("Sim");
+                    opcao = swt_opcao.getTextOn().toString();
+                    Log.i("MeuLogX", opcao);
+                }else{
+                    swt_opcao.setTextOff("Não");
+                    opcao = swt_opcao.getTextOff().toString();
+                    Log.i("MeuLogX", opcao);
                 }
             }
         });
-
 
         spin_tamanho.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 try{
                     if(position > 0) {
-                        String itemSelecionado = spin_tamanho.getSelectedItem().toString();
-                        Log.i("MeuLogX", itemSelecionado);
+                        String itemTamanhoSelecionado = spin_tamanho.getSelectedItem().toString();
+                        Log.i("MeuLogX", itemTamanhoSelecionado);
                     }
                 }catch (Exception e){
                     e.printStackTrace();
@@ -107,10 +160,11 @@ public class TelaNovo extends AppCompatActivity {
         spin_tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 try{
                     if(position > 0) {
-                        String itemSelecionado = spin_tipo.getSelectedItem().toString();
-                        Log.i("MeuLogX", itemSelecionado);
+                        String itemTipoSelecionado = spin_tipo.getSelectedItem().toString();
+                        Log.i("MeuLogX", itemTipoSelecionado);
                     }
                 }catch (Exception e){
                     e.printStackTrace();

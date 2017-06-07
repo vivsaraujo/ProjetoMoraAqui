@@ -2,6 +2,14 @@
     <string name="app_name">More Aqui</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_tela_novo">Novo</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_lista">Lista de Informações</string>
+    <string name="telefone">Telefone: </string>
+    <string name="tamanho">Tamanho: </string>
+    <string name="tipo">Tipo: </string>
+    <string name="em_construcao">Em Construção: </string>
+
+
     <string-array name="tamanho_array_list">
         <item>Pequeno</item>
         <item>Médio</item>

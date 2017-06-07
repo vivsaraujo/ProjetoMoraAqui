@@ -16,9 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorToolbar"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:title="More Aqui"
-            android:titleTextColor="@color/colorTexto"/>
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </android.support.design.widget.AppBarLayout>
 

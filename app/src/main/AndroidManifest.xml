@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vivian.projetomoraaqui">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,8 +25,21 @@
             android:name=".TelaNovo"
             android:label="@string/title_activity_tela_novo"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDdloCue1MvWBsbBjfFgAe93HTRr2_0Jws" />
+
+        <activity
+            android:name=".ListaActivity"
+            android:label="@string/title_activity_lista"
+            android:parentActivityName=".TelaNovo"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
