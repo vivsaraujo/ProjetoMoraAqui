@@ -35,13 +35,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
 
-            }
-        });
-        // Add a marker in Brazil and move the camera
+        //seta longitude e longitude de fortaleza para ser carregado no mapa
         LatLng sydney = new LatLng(-3.71839, -38.5434);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Fortaleza in Brazil"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));

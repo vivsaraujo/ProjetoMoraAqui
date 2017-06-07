@@ -23,6 +23,7 @@ public class ListaActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+// Add icone voltar com onClick para chamar a anterior
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTexto));
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.voltar);
@@ -36,6 +37,9 @@ public class ListaActivity extends AppCompatActivity {
 
         }
 
+        // Um cast da ListView
+        //Instancia da Classe do Banco de dados
+        //chama metodo mostrar lista para mostrar na tela a lista de informações
         lvRegistros = (ListView) findViewById(R.id.lv_Listar);
         banco = new DatabaseMoreAqui(this);
         montarListaRegistro();
@@ -44,6 +48,8 @@ public class ListaActivity extends AppCompatActivity {
     @SuppressWarnings("deprecation")
     private void montarListaRegistro() {
 
+        //Foi usado um SimpleCursosAdapter para recuperar os registros e adicioná-los ao componente ListView
+        //Criei um Layout XML personalizado(three_Line_List_item) para mostrar os registro na ListView
         Cursor resistros = banco.listarRegistros();
         String nomeCamposTabela[] = new String[] {"telefone", "tamanho", "tipo", "em_construcao"};
         int nomeCamposTela[] = new int[] {R.id.telefone, R.id.tamanho, R.id.tipo, R.id.em_construcao};

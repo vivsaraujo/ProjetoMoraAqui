@@ -46,9 +46,11 @@ public class TelaNovo extends AppCompatActivity {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // cast dos componentes editText, Switch, Spinner, Button...
         spin_tamanho = (Spinner) findViewById(R.id.spin_tamanho);
         spin_tipo = (Spinner) findViewById(R.id.spin_tipo);
 
+        //cast do editText telefone setando para esse campo uma máscara para digitalização no campo
         edt_fone = (EditText) findViewById(R.id.edt_fone);
         maskTEL = new MaskEditTextChangedListener("(##)#####-####", edt_fone);
         edt_fone.addTextChangedListener(maskTEL);
@@ -60,6 +62,7 @@ public class TelaNovo extends AppCompatActivity {
 
         banco = new DatabaseMoreAqui(this);
 
+        // Add icone voltar com onClick para chamar a anterior
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTexto));
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.voltar);
@@ -73,6 +76,7 @@ public class TelaNovo extends AppCompatActivity {
 
         }
 
+        //chama o metodo limpas dados para limpar todos os componentes da tela
         bt_limpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +84,10 @@ public class TelaNovo extends AppCompatActivity {
             }
         });
 
+        /*realiza verificação se campo telefone esta vazio, caso sim mostra um erro com msg "Campo Obrigatorio"
+        senão, grava os registro no banco atraves do metodo cadastrarRegistro, limpa o campo telefone, mostra
+        uma msg na tela informado que registros foram inseridos com sucesso, e chama a outra activty carregando
+         a lista das informações*/
         bt_pronto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +130,9 @@ public class TelaNovo extends AppCompatActivity {
             // }
         });
 
+        /*verifica se o switch foi marcado ou não, se sim é definido um textOn para switch sendo
+        armazenado como uma String para ser gravado no banco, se não é definido um textOff para
+        switch sendo armazenado como uma String para ser gravado no banco*/
         swt_opcao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -138,6 +149,8 @@ public class TelaNovo extends AppCompatActivity {
             }
         });
 
+        /*define que o item selecionado tem que ser maior que a posição 0, o item selecionado
+        é armazenado numa String para ser registrado no banco */
         spin_tamanho.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -157,6 +170,8 @@ public class TelaNovo extends AppCompatActivity {
             }
         });
 
+        /*define que o item selecionado tem que ser maior que a posição 0, o item selecionado
+        é armazenado numa String para ser registrado no banco */
         spin_tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -182,6 +197,8 @@ public class TelaNovo extends AppCompatActivity {
 
     }
 
+    /*carrega layout array list criado na pasta /Values/Strings,
+    carrega layout nativo do android*/
     public void carregaSpinnerTamanho() {
 
         adapterTamanho = ArrayAdapter.createFromResource(this,R.array.tamanho_array_list,
@@ -192,7 +209,8 @@ public class TelaNovo extends AppCompatActivity {
                 R.layout.spinner_tamanho_nothing_selected,
                 this));
     }
-
+    /*carrega layout array list criado na pasta /Values/Strings,
+       carrega layout nativo do android*/
     public void carregaSpinnerTipo(){
 
         adapterTipo = ArrayAdapter.createFromResource(this,R.array.tipo_array_list,
@@ -204,11 +222,9 @@ public class TelaNovo extends AppCompatActivity {
                 this));
 
     }
-
+        //metodo limpa todos os componentes da tela
     public void limparDados(View view){
-
         edt_fone.setText(null);
-
         spin_tamanho.setAdapter(new NothingSelectedSpinnerAdapter(adapterTamanho,
                 R.layout.spinner_tamanho_nothing_selected,
                 this));

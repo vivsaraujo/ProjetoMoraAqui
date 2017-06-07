@@ -12,19 +12,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseMoreAqui extends SQLiteOpenHelper {
 
+    // nome do banco e versao
     private static final int VERSAO = 1;
     private static final String NOME_BANCO = "banco";
 
     public DatabaseMoreAqui(Context context) {
         super(context, NOME_BANCO, null, VERSAO);
     }
-
+    //criado tabela e seus dados
     @Override
     public void onCreate(SQLiteDatabase banco) {
 
         banco.execSQL("CREATE TABLE more_aqui (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "telefone TEXT NOT NULL, tamanho TEXT NOT NULL, tipo TEXT NOT NULL, em_construcao TEXT NOT NULL)");
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase banco, int oldVersion, int newVersion) {
@@ -33,6 +35,7 @@ public class DatabaseMoreAqui extends SQLiteOpenHelper {
 
     }
 
+    // inserir registros no banco
     public void cadastrarRegistro(MoreAqui m){
 
         SQLiteDatabase banco = this.getWritableDatabase();
@@ -47,6 +50,7 @@ public class DatabaseMoreAqui extends SQLiteOpenHelper {
         banco.close();
     }
 
+    //listar registro inseridos no banco
     public Cursor listarRegistros() {
         SQLiteDatabase banco = this.getWritableDatabase();
 

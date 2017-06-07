@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //cast do botao  novo/ chama tela TELANOVO
         bt_novo = (Button) findViewById(R.id.bt_novo);
         bt_novo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //cast do botao  novo/ chama tela MAPSACTIVITY
         bt_mapa = (Button) findViewById(R.id.bt_mapa);
         bt_mapa.setOnClickListener(new View.OnClickListener() {
             @Override
