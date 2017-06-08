@@ -38,6 +38,8 @@ public class TelaNovo extends AppCompatActivity {
     private MaskEditTextChangedListener maskTEL;
 
     String opcao;
+    String itemTipoSelecionado;
+    String itemTamanhoSelecionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,7 @@ public class TelaNovo extends AppCompatActivity {
 
         banco = new DatabaseMoreAqui(this);
 
-        // Add icone voltar com onClick para chamar a anterior
+        // Add navigation com icone voltar com onClick para chamar a anterior
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTexto));
         if (toolbar != null) {
             toolbar.setNavigationIcon(R.drawable.voltar);
@@ -86,7 +88,7 @@ public class TelaNovo extends AppCompatActivity {
 
         /*realiza verificação se campo telefone esta vazio, caso sim mostra um erro com msg "Campo Obrigatorio"
         senão, grava os registro no banco atraves do metodo cadastrarRegistro, limpa o campo telefone, mostra
-        uma msg na tela informado que registros foram inseridos com sucesso, e chama a outra activty carregando
+        uma msg na tela informando que registros foram inseridos com sucesso, e chama a outra activty carregando
          a lista das informações*/
         bt_pronto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,7 +158,7 @@ public class TelaNovo extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 try{
                     if(position > 0) {
-                        String itemTamanhoSelecionado = spin_tamanho.getSelectedItem().toString();
+                        itemTamanhoSelecionado = spin_tamanho.getSelectedItem().toString();
                         Log.i("MeuLogX", itemTamanhoSelecionado);
                     }
                 }catch (Exception e){
@@ -178,7 +180,7 @@ public class TelaNovo extends AppCompatActivity {
 
                 try{
                     if(position > 0) {
-                        String itemTipoSelecionado = spin_tipo.getSelectedItem().toString();
+                        itemTipoSelecionado = spin_tipo.getSelectedItem().toString();
                         Log.i("MeuLogX", itemTipoSelecionado);
                     }
                 }catch (Exception e){

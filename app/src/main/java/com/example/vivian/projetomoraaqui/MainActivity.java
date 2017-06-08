@@ -6,12 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private Button bt_novo;
     private Button bt_mapa;
+    private Button bt_procurar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        bt_procurar = (Button) findViewById(R.id.bt_procurar);
+        bt_procurar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainActivity.this, ListaActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         //cast do botao  novo/ chama tela MAPSACTIVITY
         bt_mapa = (Button) findViewById(R.id.bt_mapa);

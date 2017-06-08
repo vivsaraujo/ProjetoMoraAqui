@@ -2,8 +2,6 @@ package com.example.vivian.projetomoraaqui;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +20,7 @@ public class ListaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
 // Add icone voltar com onClick para chamar a anterior
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTexto));
